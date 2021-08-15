@@ -1,0 +1,19 @@
+﻿@model IEnumerable <FirstMVCApplication.Models.Customer>
+@{
+    ViewBag.Title = "List of Customers";
+}
+
+<h2>List of Customers</h2>
+
+@foreach (var v in Model)
+{
+<div>
+    ID: @v.Id<br>
+    Name:@v.Name<br>
+    Age:@v.Age<br>
+    Phone:@v.Phone<br>
+    @Html.ActionLink("Update", "Update", new { id= v.Id})
+    @Html.ActionLink("Delete", "Delete", new { id = v.Id })
+</div>
+    <hr />
+}

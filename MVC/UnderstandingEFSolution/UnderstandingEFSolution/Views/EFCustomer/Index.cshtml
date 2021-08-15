@@ -1,0 +1,15 @@
+﻿@model IEnumerable<UnderstandingEFSolution.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ol>
+    @foreach ( var v in Model)
+    {
+        <li>@v.CustomerID @v.ContactName @v.Phone</li>
+    }
+</ol>
+

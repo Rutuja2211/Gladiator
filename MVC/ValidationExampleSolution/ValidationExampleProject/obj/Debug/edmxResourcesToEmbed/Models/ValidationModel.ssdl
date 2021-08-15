@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbDiscShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Gamers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Player" Type="varchar" MaxLength="50" />
+    <Property Name="GameId" Type="int" />
+    <Property Name="Score" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Game" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="age" Type="int" />
+    <Property Name="role" Type="varchar" MaxLength="10" />
+    <Property Name="isActive" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <Association Name="FK__Gamers__GameId__00200768">
+    <End Role="Games" Type="Self.Games" Multiplicity="0..1" />
+    <End Role="Gamers" Type="Self.Gamers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gamers">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="proc_add_gamers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="player" Type="varchar" Mode="In" />
+    <Parameter Name="gameid" Type="int" Mode="In" />
+    <Parameter Name="score" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_games" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_LoginCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="un" Type="varchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_register_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="un" Type="varchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+    <Parameter Name="uname" Type="varchar" Mode="In" />
+    <Parameter Name="uage" Type="int" Mode="In" />
+    <Parameter Name="urole" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_users_score" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="gameid" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="dbDiscShopModelStoreContainer">
+    <EntitySet Name="Gamers" EntityType="Self.Gamers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Gamers__GameId__00200768" Association="Self.FK__Gamers__GameId__00200768">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Gamers" EntitySet="Gamers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,20 @@
+﻿@model ValidationExampleProject.Models.Game
+
+@{
+    ViewBag.Title = "GamesMainPage";
+}
+
+<h2>WELCOME TO GAMING ARENA!!</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.DropDownListFor(m => m.Id, new SelectList(@ViewBag.games), "Select game")
+    </div>
+    <br />
+    <input type="submit" value="Go" class="btn btn-default" />
+}
+
+
+

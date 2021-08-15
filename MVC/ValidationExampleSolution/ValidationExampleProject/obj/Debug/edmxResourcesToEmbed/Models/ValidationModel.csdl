@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbDiscShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="dbDiscShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="users" EntityType="Self.user" />
+    <FunctionImport Name="proc_register_user">
+      <Parameter Name="un" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="uname" Mode="In" Type="String" />
+      <Parameter Name="uage" Mode="In" Type="Int32" />
+      <Parameter Name="urole" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_LoginCheck" ReturnType="Collection(dbDiscShopModel.proc_LoginCheck_Result)">
+      <Parameter Name="un" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Gamers" EntityType="dbDiscShopModel.Gamer" />
+    <EntitySet Name="Games" EntityType="dbDiscShopModel.Game" />
+    <AssociationSet Name="FK__Gamers__GameId__00200768" Association="dbDiscShopModel.FK__Gamers__GameId__00200768">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="Gamer" EntitySet="Gamers" />
+    </AssociationSet>
+    <FunctionImport Name="proc_add_gamers">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="player" Mode="In" Type="String" />
+      <Parameter Name="gameid" Mode="In" Type="Int32" />
+      <Parameter Name="score" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_users_score" ReturnType="Collection(dbDiscShopModel.proc_users_score_Result)">
+      <Parameter Name="gameid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_games" ReturnType="Collection(String)" />
+  </EntityContainer>
+  <ComplexType Name="proc_LoginCheck_Result">
+    <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="role" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <EntityType Name="Gamer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Player" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GameId" Type="Int32" />
+    <Property Name="Score" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Game" Relationship="dbDiscShopModel.FK__Gamers__GameId__00200768" FromRole="Gamer" ToRole="Game" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Game1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Gamers" Relationship="dbDiscShopModel.FK__Gamers__GameId__00200768" FromRole="Game" ToRole="Gamer" />
+  </EntityType>
+  <Association Name="FK__Gamers__GameId__00200768">
+    <End Type="dbDiscShopModel.Game" Role="Game" Multiplicity="0..1" />
+    <End Type="dbDiscShopModel.Gamer" Role="Gamer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gamer">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="proc_users_score_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Player" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Score" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

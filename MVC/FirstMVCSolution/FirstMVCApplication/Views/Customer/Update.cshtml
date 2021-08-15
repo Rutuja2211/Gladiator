@@ -1,0 +1,30 @@
+﻿@model FirstMVCApplication.Models.Customer
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update", "Customer", FormMethod.Post))
+{
+    <table>
+
+        <tr>
+            <td>Customer Name : </td>
+            <td>@Html.TextBoxFor(z => z.Name)</td>
+        </tr>
+
+        <tr>
+            <td>Customer Age : </td>
+            <td>@Html.TextBoxFor(z => z.Age)</td>
+        </tr>
+
+        <tr>
+            <td>Customer Phone : </td>
+            <td>@Html.TextBoxFor(z => z.Phone)</td>
+        </tr>
+
+    </table>
+    <br>
+    <input type="submit" value="Update" />
+}

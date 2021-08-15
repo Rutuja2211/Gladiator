@@ -1,0 +1,557 @@
+-Signup
+-Subscriptions
+Based on environments, organizational structures, billing
+-Availability sets(Local Hardware Failures), availability zones(Data center failures), paired regions(Region failures)
+
+Subscription->1 Azure active directory
+Multiple subscriptions can have same AZD
+
+Resource Manager: Manage, Monitor, Deploy Resources
+
+-Resource - VMs, Storage acc, VN, etc
+-Resource Group- Container to hold and manage related  resources as a grp
+-Resource Provider-Microsoft.compute,Micrpsoft.storage
+-Resource Manager Template
+
+----------------------------------------------------------------
+aka.ms/architecture
+
+
+Azure Services:
+1. Compute services
+
+-VMs(Windows,Linux)
+6 types 28 families
+Can attach data disks with VMs alomg with temporary storage
+Reserved Instances
+
+-App Service
+PAAS managed environment
+App Service plans
+
+-Azure Functions
+Serverless compute on demand
+FaaS
+Execute code in response to triggers or run code by schedule eg. Lambda in AWS
+
+-Batch
+Large scale parallel workloads efficiently
+Scalable to cores
+
+-Container Service(ACS/AKS)
+Orchrestrating containers for Large scale micro service applications
+Auto patch and upgrade
+
+-Container Instance
+CaaS
+Simple, single, isolated containers unlike AKS
+
+-Service Fabric
+Platform for running microservice and containers
+
+-Cloud Service
+Original PaaS like Azure service
+Web roles and worker roles
+
+2.Networking Services
+
+-VNETs
+Isolated networks
+Has Subnets and defined routes
+Security Groups
+VNET Peering
+Service endpoints
+
+-Load Balancer
+Transport Layer
+Public/Internal in VNET
+
+-Application Gateway
+Advanced load balancer for HTTP based traffic
+SSL,Cookies,Web Sockets,Firewall integrated
+
+-VPN Gateway
+S2S and P2S
+one VPN Gateway per VNET
+Policy based or route based
+
+-Azure DNS
+Host your DNS Domains
+Not purchase just host
+Pay per million queries
+
+-Traffic Manager
+Route global traffic
+Uses DNS to send traffic to best available endpoint
+
+-Content Delivery Network (CDN)
+Data closer to users to improve performance
+Static assets
+Dynamic site acceleration
+
+Express Route
+Private connection into Azure
+Replace VPN from datacenter to Azure
+
+3.Storage Services
+
+-Azure Storage
+Storage account
+500TB per acc
+Types:Standard HDD, Premium SSD (For DIsks)
+Replication levels within storage account: LocalRedundantStorage,ZoneRS,GeoRS,ReadAccess-GRS
+Various Tiers-Archive(Blob only), Cool(Rarely accessed data), Hot(Regularly accessed data)
+
+-Blob Storage
+Internet accessible object store to store large amounts of unstructured data via http/https
+Public/Private data
+Storage Account->Container->Blob(obj)
+3 types:Block(Text/Binary files like media,commonly used), Append(log data),Page(frequent read write operations on data, Azure VMs use for OS and Data Disks)
+Archive Tier for infrequently accessed data
+S3 in Amazon
+
+-Queue Storage
+Web/Worker roles
+Durable managed
+Async processing jobs
+Service Bus Queues is different
+
+-File Storage
+FIle share system
+Used concurrently by in cloud or on prem machines
+Alternative to on prem file servers
+5TB max file share
+
+-Table Storage
+Store unstructured NoSQL Data
+Key/Value
+Entity upto 1MB(row/entry)
+Table resides in Azure Storage but better option is Azure Cosmos DB Table API for premium experience
+
+-Disk Storage
+Managed and Unmanaged disks for VMs
+Managed take careof storage account, you pay for what you provision but in unmanaged you pay for what you use
+Premium SSD, Magnetic Standard HDD-32GB to 4TB
+Multiple diska to a VM
+
+4. Web and Mobile Services
+
+-App Service
+PaaS-managed environment (Hosting any appln)
+Languages,containers supported
+Web apps+APIs+Mobile Backends+Containers-Types of applns supported
+Windows and Linux VMs
+App Service Plans-Multiple appns run in a single environment
+CI/CD integration
+
+-API Management
+Managed,scalable API gateway service
+3 components:
+*Gateway- Caching and Authorisation
+*Developer Portal(for users of your APIs)- Documentation, Access Requests
+*Publisher Portal-Import existing APIs, Create API Products (for users to consume)
+
+-Media Services
+End to end media service(Video assets)
+Upload,store,encide,package,deliver
+On demand and live events
+Streaming URLs
+Protection of content via encryption
+
+-Notification Hubs
+Mobile Push Notifications(ios,ANdroid,Kindle,Windows)
+Segment customers based on tags
+Tailor notifications based on language, location
+Scheduled notifications
+Silent push notifications
+
+-Azure Search
+Managed search(Full text search rather than based on indices of databases)
+Accepts any data in JSON
+Auto crawl various Azure services like Cosmos DB, Bob storage, etc
+FIlter,Search,Paging, Geo based Search
+
+
+5. Databases
+
+-Azure SQL DB
+Fully managed SQL database
+Single DB, Elastic Pools(Share a pool of resources amongst various databases-resources optimisation)
+Billed in Database Transaction Units(DTUs)
+Autotuning-Applies performance tuning automatically based on ur usage
+
+-Azure DB for MySQL and PostgreSQL
+Managed RDS(Open source)
+High availibility, Pay as you go
+125GB storage free
+
+-SQL Data Warehouse
+Petabyte scale Enterprise Data Warehouse
+Massive parallel processing (Complex queries)
+Import data using polybase(Querying Tool to bring data from various stores to warehouse)
+Columnar storage in tables to query in seconds
+Billed in cDWUs
+#AWS Redshift
+
+-Cosmos DB
+Planet Scale db offering(Global Distribution)
+99.99% availability
+Multi model (Document, mongoDB,Cassandra,Graph,Table)
+Turnkey global replication
+5 consistency options: strong SQL, Relaxed to NoSQL
+Automatically indexes all data
+
+-Redis Cache
+In memory key-value store
+Frequently accessed data
+
+6. Data and Analytics
+
+-HDInsight
+Fully managed open source analytics service
+Based on Hadoop
+Streaming or historical data using frameworks Hadoop, Spark, Hive, Kafka, R, etc
+Batch Processing, Streaming Data, DataScience-use cases
+#AWS EMR
+
+-Event Hubs
+Large scale telemetry ingestion enables u to bring millions of events per sec into event hub
+Whenever you need to ingest a load of data into cloud at realtime, use Event Hub
+Capture data into azure blob or data lake
+Publishers send data to event hub and consumers read data from the hub
+Retention period:7days
+#AWS Kinesis
+
+-Azure Data Lake Store and Analytics
+Hyper scale repository for analytic workloads (dump data here and perform analytics)
+HDFS compatible,HDInsight integration
+Unlimited storage
+Uses U-SQL Language(SQL+User C#)
+
+-Data Factory
+Cloud based data integration service
+(Data comes into blob storage,analysed by HD insights and theen loaded into data warehouse)
+Data factory moves the data along its journey through systems
+ETL(Extract-Transform-Load) data within cloud
+#AWS data pipeline
+
+-Azure Analysis Services
+Enterprise grade data modelling in cloud
+Connect and analyse disparate data services
+Combine data from various sources into single semantic model for business users to query
+Built on SQL Server Analysis Services
+
+7. AI & Cognitive Services
+
+-Machine Learning
+end to end data science solution (Predictive analysis)
+ML Components:
+*ML Workbench-Desktop app for developmemt and deployment of models
+*ML Experimentation Service
+*ML Model ManagementServices
+*ML Libraries for Apache Spark
+*Visual Studio Code tools for AI
+#AWS Mahcine Learning
+
+-Azure Bot Service
+Everything you need for bot creation
+BOT builder SDK for developing bots & build dialogue model with users
+Bot Framework for connecting to channels like skype, slack,etc
+2 deployment options: Web app service(using App Service) and Azure Functions (Serverless manner)
+Integrates with LUIS(NLP)
+5 bot templates
+#AWS Lex
+
+Cognitive Services:
+
+-Vision
+*Computer Vision API-Information from images
+*Face API-Detect, organize and analyase faces within photos
+*Content Moderator-Image text video moderator
+*Emotion API-Happy, sad, from images
+*Custom vision services-build own model
+*Video Indexer-Unlock video insights-keywords, speech sentiment, audio translation, find people, brands etc
+#AWS Recognition 
+
+-Speech
+*Translator Speech API-Realtime translation
+*Bing Speech API- Speech-text and viceversa for many languages
+*Speaker Recognition API-Identification and verification of speaker via training
+*Custom Speech Service-Custom language like brands, slangs, etc
+#Amzon Transcribe and Amazon Polly
+
+-Knowledge
+*QnA Maker API-Upload a FAQs document and automatically generate a QnA bot to answer questions from data set you provided
+*Custom Decision Service
+
+-Search
+*Bing Autosuggest
+*Bing News Search
+*Bing Web Search
+*Bing Image, Video,Custom Search
+
+-Language
+*LUIS (Language Understanding Intelligent Service-NLP) - Detect users intent and extract entities via speect or text or input
+*Bing Spell Check-Run spell check over data in applications
+*Text Analytics-Sentiment analysis
+*Translator Text API
+#Amazon Translate
+
+8. IOT
+
+-IOT Hub
+Fully managed IoT Gateways-Connect End IOT devices
+Bidirectional communication to millions of devices
+Device Twins-Cloud based metadata representation of a device.Query on this
+Rules engine-Route device msgs to cloud services
+Client side device SDKs
+Device provisioning service
+#AWS IOT
+
+-IOT EDGE
+Builds on top of IoT hub
+Analyse data on devices
+Reduce bandwidth (Clean data before sending to cloud)
+Act as quickly as possible
+Containers that run Azure services
+Remotely monitor and manage devices from cloud(Easy to manage)
+#AWS Greengrass
+
+-Stream Analytics
+Realtime analytics on streaming data
+Integrates with IoT hub and Event hub
+Can run on IoT edge, so you don't have to bring the data to cloud
+Not only IoT data other data as well
+Analytics is done using Simple SQL-language else user defined functions in Javascript for custom
+Pay per job
+
+-Time Series Insights
+Store, Query and Visualise time series data (how any quantity changes over time is time series)
+Fully integrated into Event hub, IoT Hub
+JSON format data
+Stores data in SSD for upto 400 days
+Out of the box visualisation
+Query service-Explorer+APIs
+APIs for building custom solutions
+
+9. Enterprise Integration
+
+-Azure Logic Apps
+Fully managed integration workflow (Designs in flowdiagram)
+Nice graphical designer (Drag and drop)
+Serverless
+Trigger-Some event that kicks off your workflow and start working with logic apps
+Actions-After the trigger
+200 builtin integrations (twitter, salesforce, slack,etc)
+Extend functionality with Azure functions-Event driven service
+Conditional statements and loops supported
+#AWS Step Functions
+
+-Event Grid
+Fully managed event routing service
+No more polling for activity, get events from Event Publishers like Blob storage or IoT hub,etc
+Takes those events and routes them to Event Handler like logic apps, azure functions, web hook, etc
+24 hrs delivery
+
+-Service Bus
+Cloud messaging as a service
+Supports 2 messaging patterns
+*WCF (Windows Communication Foundation) Relay-SOAP or REST services easily communicate with each other but requires both server and client to be online at that moment to facilitate communication
+*Service Bus Messaging (Brokered msging)-Asynchronous, two ends no need to be online, store in queue till receiver is ready to take in
+Event Grid is for realtime event driven reaction or processing whereas Service bus is for temporal control
+#AMAZON SQS
+
+-Data Catalog
+Managed data discovery and centralisation service for disparate data
+Connect data catalog to key datasets. Data catalog will take a copy of its metadata and index it
+Users can ask questions of the data(All the data together or comaparatively as well)
+Get insights of all the disparate data without having to pull all that data into one place
+
+10. Security and Identity
+
+-Azure Active Directory
+Core Azure Service-Manage access to azure resources, RBAC
+Directory and Identity Management service
+Control to Azure resources
+Single sign On SSO for thousands of cloud SaaS applns
+Integrate into your own apps for authentication/authorisation and also on premises windows AD
+#AWS IAM
+
+-Azure Active Directory B2C
+Consumer identity and access management for own consumer based appns
+Log consumers in via social, enterprise or local accounts
+Different AD tenant to your normal Azure AD Tenant (Consumers not be accessing AD for Business)
+#AWS Cognito
+
+-Azure Active Directory Domain Services
+Managed domain service service
+*Domain Join
+*Group Policy
+*Authentication with LDAP & Kerberos
+No need to deploy and manage domain controllers
+Cloud only or Hybrid solutions
+#AWS Directory Service
+
+-Key Vault
+Secure key management service
+Encryption
+Keys protected by hardware security modules(HSMs)
+Monitor key usage(even realtime)
+#AWS Key Management
+
+-Security Center
+Centralised security management over your cloud environment (also on premises)
+Centaralised policy management
+Continuous assesment (alert if security breaches or vulnerabilities)
+Actionable recommendations
+Prioritising alerting
+2 tiers: Free and Standard
+
+11. Monitoring and Management
+
+-Azure Policy
+Governance of azure resources(people complying to rules)
+Create, Assign and manage policy definitions
+Checks for compliance against policies (check if breached or not)
+Both green and brown field policies (validated at created but then continuously checked in case any resource gets updated-make sure system is compliant beyond just initial deployment)
+Can be applied at different scopes(Resource level, subscription level, management groups or central policy to apply to multiple subscriptions etc)
+Can apply different effects (Append, Audit, Deny-Action that happens if that rule within the policy is met)
+#AWS Config
+
+-Azure Monitor
+Basic monitoring across azure resources
+Metrics-Performance statistics
+Activity log-Resources created deleted(actions users have taken)
+Diagnostic log-Operations from service itself
+#AWS Cloudwatch
+
+-Application Insights
+Application Performance Management
+.NET,Node.js or J2EE apps
+Visual Studio integration for .NET
+Tons of app monitoring features
+ *Analytics, Dashboards, tracing, dependency maps
+Not only azure hosted apps, on premises as well
+#AWS X-Ray
+
+-Log Analytics
+Collect log data from various sources(monitoring tools on prem or cloud)-Agents installed on VMs directly, via systems center operations manager(onprem), azure monitor and diagnostic logs
+Supports custom data
+Log searches (queries of data saved onto portal, or run automatically and create an alert if an imp condition is met)
+Create dashboards in azure portal-Get central view of your environment
+Export data to other tools(PowerBi for further analytics or business intelligence tools)
+
+-Azure Site Recovery
+Business continuity or disaster recovery service in azure (VMs on prem or cloud or physical)
+Failover and failback (from primary location to secondary location and then when primary is fine, back at it)
+Can be used for migrating data center VMs to cloud
+
+-Azure Backup
+Backup as a service (files, servers, etc)
+Both cloud and onprem support
+Unlimited scaling
+Multiple storage options-locally or geo redundant storage
+Not only servers, supports windows computers, Windows and SQL Server VMs
+Linux support for Azure VMs only not onprem
+
+----------------------------------------------------
+AZ 900
+Lab-Customize Dashboard(Pin resources)
+
+CLI-Cross platform, easier structure and stable ie cmds remain same, logging is easier
+
+Powershell-cmdlet series of commands
+
+Cloudshell-browser accessible shell for managing azure resources-standalone and in-portal as well
+Anywhere access
+
+
+ARM-Azure Resource Manager-Gatekeeper to manage anything in azure
+ARM templates-common language & syntax-describe actions to resources (Idempotent)
+Written in JSON(Javascript object notation)
+Reusable
+
+
+
+CLOUD CONCEPTS:
+
+Language of CLD:
+-High Availability
+-Fault Tolerance - Zero down-time
+-Disaster Recovery
+-Scalability-adding more resources on needs
+Scaleout(more resources),scaleup(same resource bigger),scaledown
+-Elasticity-Quickly able to expand or decrease computing resources. It enables scalibilty
+-Agility - rapidly develop test and launch apps
+
+Language of CLD Economics:
+Consumption based pricing
+Capital Expenditure
+Operational Expenditure-Pay as u go
+
+CLOUD SERVICE MODELS:
+-Iaas-Servers, VMs, Networkd, Buildings
+-Paas-Superset of Iaas-Middle are,Tools,BI, DBMS,etc. Support  web developmentlifecycle-building,testing,deploying, managing, updating. Avoid software license
+-Saas-Includes both and build on top-Apps-Managed service.eg. Microsoft Office 365
+-Serverless-Azure functions
+-Shared responsibility
+
+Azure Marketplace-App store also publish your own services
+
+Private Cloud
+Public cloud
+Hybrid Cloud
+
+AZURE ARCHITECTURE:
+1.Regions-set of datacenters
+-Choose a region closest to users to minimize latency(data travels fast)
+-Some features not available in some rehions. Pricing also varies according to regions
+*Paired region-Outage failover-Service replication
+
+2.Availability zones-Unique physical locations within azure regions. Each zone has one or more datacenters. Each regions has min 3 zones. Physical spearation prevents data loss by data center outage(DIff centers)
+Keep data in 2 zones. Automatically in other zones.
+
+3.Resource groups- Everything is insode RG. Container that holds related resources. 
+One resource only belongs to one resource group
+Resources fom multiple regions in same resource group
+
+4.Azure resource manager-Deployment and management, monitoring services for azure along with access control. Interaction with resources goes through the ARM, portal, cli, sdk, etc
+Tagging and billing
+
+
+
+COMPUTE:
+1.Virtual machines-Server without exclusive hardware. Iaas.
+Pricing is hourly and resource specifications like RAM or CPU
+When used? Control all aspects, install specific apps or move existing resources or on prem to azure
+
+2.Scale sets- Create and manage a group of identical load balanced VMs i.e clones your VM
+When out of capacity, adds VM from scale set (automatically or as scheduled)
+
+3.App Services- Paas-Fully managed platform-Just focus on business value and logic.3 main categories: Web apps,, web apps for containers,API apps (No UI, just connect backend)
+
+4.Azure Container Services-
+Provides all necessary dependencies such as frameworks, other software or OI interfaces in the image-Put app in the container and it will run on any machine. Have many containers on same machine or VM and each container is a single self-contained application
+Make an appn using SDC, thein its placed in a container and then deployed in azure container instances (ACI)-Service to host workloads in a container
+
+5.Azure Kubernetes Service-manage many containers at once.(K8s) Open source container orchestration system for automating application deployment,scaling,management
+Replicate container architecture, standard azure services included
+
+Azure container registry(ACR)-track of currennt valid container images, manage associated files known as artifacts
+AKS-cluster-set of machines nodes
+Pods is a group of containers
+AKS cluster->Nodes or VMs->Pods hosted in nodes->One or more containers
+
+6.Windows Virtual Desktop
+
+7.Functions
+Smallest compute service
+single function, called using URL
+Runs once and stops-1 unit of compute
+Use VMs at back, its serverless, just focus on functionality
+
+
+
+
+
+

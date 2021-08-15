@@ -1,0 +1,30 @@
+﻿@model FirstMVCApplication.Models.Customer
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you sure you want to delete??</h2>
+
+@using (Html.BeginForm("Delete", "Customer", FormMethod.Post))
+{
+    <table>
+
+        <tr>
+            <td>Customer Name : </td>
+            <td>@Html.DisplayFor(z => z.Name)</td>
+        </tr>
+
+        <tr>
+            <td>Customer Age : </td>
+            <td>@Html.DisplayFor(z => z.Age)</td>
+        </tr>
+
+        <tr>
+            <td>Customer Phone : </td>
+            <td>@Html.DisplayFor(z => z.Phone)</td>
+        </tr>
+
+    </table>
+    <br>
+    <input type="submit" value="Yes" />
+}

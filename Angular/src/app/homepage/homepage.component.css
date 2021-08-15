@@ -1,0 +1,36 @@
+#heading
+{
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.maindiv
+{
+    background-color: rgba(1, 1, 1, 0.1);
+    width:  500px;
+    margin: 15px auto;
+}
+
+.btnadd
+{   
+    
+    float: right;
+    background-color: #06a2fb;
+    border:none;
+}
+
+.topdiv
+{
+    font-size: large;
+    font-weight: bold;
+    padding:15px;
+}
+
+#searchbar
+{
+    border:0.25px solid rgb(197, 196, 196);
+    margin:0 20px;
+    font-size: 16px;
+    padding:5px;
+}

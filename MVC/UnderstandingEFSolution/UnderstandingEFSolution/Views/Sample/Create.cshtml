@@ -1,0 +1,19 @@
+﻿@model UnderstandingEFSolution.Models.tblSample
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(m => m.id)
+    @Html.TextBoxFor(m => m.id)
+    <br />
+    @Html.DisplayNameFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    <br />
+    <input type="submit" value="Add" />
+}
+

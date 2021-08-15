@@ -1,0 +1,21 @@
+<div class="maindiv">
+    <div id="heading">Phone Book App</div>
+
+    <ul class="topdiv">
+        <br><span style="font-size: 28px;">Contacts</span>
+        <span><button class="btnadd" style="color: white;">+ Add Contact</button></span>
+    </ul>
+
+        <span class="glyphicon glyphicon-search">
+            <input class="glyphicon glyphicon-search" type="text" placeholder=" Search for contact by last name.." [(ngModel)]="last" id="searchbar" style="width: 450px;"><br><br>
+            <br>
+        </span>
+    
+        
+        <div *ngFor="let c of contacts | surnameFilter:last">
+            <app-contact [myContact]="c"></app-contact>
+        </div>
+      
+
+    <app-addcontact></app-addcontact>
+</div>

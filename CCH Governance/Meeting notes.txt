@@ -1,0 +1,30 @@
+Cost Management (9 Nov 20)
+--------------------------------------
+-service now tool
+-Azure billing/cost management monitoring
+-notification to cost owners- Azure functions (based on rules-manually)
+-Reserved VM instances(or to pay-as-u go)
+(dynamic so reserved is not exactly worth it- Enterprise applications)
+-Autoshutdown
+-Unused resources(monitor+deprovision/take action)-Az Advisior used monthly
+-Cleanup of orphaned disk and related objects(dangling/orphaned obj related to deleted VM)-(Policy)
+       -Disks(HDD,Standard/Premium SSD)-99.5%,99.9%-SLAs
+-Storage redundancy-Cosmos DB-Geo-Redundant??
+
+
+-Auto-scaling(Horizontal/Vertical)
+            -Vertical-increase capacity of existing hardware/software
+            -Horizontal-connect multiple entities to work as single unit
+	eg. -Spot instances(Bidding for resources cheaper, immediate assign-not for longer time but useful for temporary work/temporary overload)
+-Archive storage???- rarely accessed resource
+
+
+--------------------------------------------------
+Resource Consistency
+
+Naming conventions:
+Policy to name resources in a certain way???
+
+Any convention-but uniform overall-not too long
+Clarity regarding the resources from name-not only identifyable for the person who makes them
+

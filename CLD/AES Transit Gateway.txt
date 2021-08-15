@@ -1,0 +1,98 @@
+What is Transit Gateway??
+
+A transit gateway is a network transit hub that you can use to interconnect your multiple virtual private clouds (VPCs) and on-premises networks.
+
+Similar to Virtual Private Gateway that acts as a router forwarding received packets to destibnation, only that it can be associated with 1 VPC and 1 routing table.
+
+
+EXAMPLE:
+
+VPC's: With data center VPNs
+	Amongst each other VPC Peering
+
+Complex architecture when many VPCs involved\Solution is time consuming to build and hard to manage
+No transitiive connection. Only dirrect.
+A-B B-C no A-C. separate A-C connection
+
+Alternative:
+
+Transit Gateway sits between the data center and VPCs allowing everything to communicate with each other. Every VPS connected to Transit Gateway is available to every other connected VPC or network.
+
+Route Tables to see which VPCs can communicate with each other.
+Only need to configure the communication between your data center and transit gateway once and everything else is configured within AWS. So no need for adding VPNs for every new VPC.
+Communication between VPCs is done over AWS private network
+
+
+Benefits:
+-Highly scalable
+-Hub and Spoke- Create and manage single connection as well as have centralized policies
+-Secure- Traffic b/w VPCs and gateway is on AWS network and b/w VPCs and avoids using public internet. INter-region traffic is encrypted
+
+Creating:
+TGWs are connected to AWS network objects via attachments(that have own assigned AWS identifier)
+SO all the traffic is identified via these attachments
+
+Can connect/have attachments with VPCs from any AWS account, VPN customer gateway or direct connect gateway provided they are in same region as TGW
+
+Can also peer with TGWs amongst regions by a peering connection attachment, only few regions supported. Only static route configuration
+
+
+-Attachments to VPCs must connect to a subnet in atleast one availability zone. This will create a single elastic network interface within that subnet for connection. FOr high availability, connect to subnets in 2 AZs
+
+-For VPN attachments, Customer gateway needs to be configured. Create new or existing
+VPN attachment creates as AWS VPN connection
+Only basic VPN tunnel options are available during createion, subsequent management is performed from Site-to-Site VPN connections console
+If static routing is selected, static routes are added via TGW route tables. All appropriate VPN connection charges will be applied in addition to TGW charges.
+
+-Attachment to the direct connect gateway are created from Direct Connect service not the VPC service.
+This requires creation of Transit Interface. Public and Private VIFs cannot be attached to TGW
+For dynamic routing purposes, Direct Connect Gateway and TGW should be configured with different autonomous system numbers.
+
+Properties are optional
+Only tags can be modified after creation
+Default liimt of 5 TGWs per account per region
+Billed hourly per operational TGW attachment, varies across regions
+
+
+Route Tables:
+-Identifies traffic routed to which attachment
+-Each TGW single route table as default but can support upto max 20 tables
+-Routes in TGW table pair with destination CIDR with a TGW attachment ID that matching traffic will be forwarded to.
+-Traffic to destinations not in the route table will be dropped
+-Each object attachment will be associated to only a single TGW route table
+-A TGW route table may be associated with more than one attachment.
+-Attachments may be configured to automatically propogate known CIDR ranges into route tables.
+-Static routes for directing towards specific attachment
+-Only 1 default route per route table
+-Blackhole routes drop traffic matching CIDR
+
+-Routes from VPCs to TWG attached networks should be added manually
+-Routes from VPN CGWs will be learned via BGP
+
+Monitoring:
+Cloudwatch metrics
+Bytes In/out,packetsin/out,packetdropcountrouteno,etc
+No flowlogs collected by TGWs, only at VPCs or subnets
+
+Billing:
+TGW attachments billed per partial hour
+-VPC owner(VPC attachments)
+-TGW owner(VPN attachments)
+DX owner(DX attachments)
+Peering (Both owners charged)
+Also charge per GB of data processed bt TGW
+No charge for data processing via peering
+VPN connection charges too, if added extra 
+
+
+
+
+
+
+
+
+
+
+
+
+

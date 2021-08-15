@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ValidationExampleProject.Models.user>
+
+
+@foreach (var item in Model) {
+    
+        @Html.Partial("_UserSingle",item)
+}
+
+

@@ -1,0 +1,114 @@
+What? Why? How?
+
+
+WHAT?
+
+Cloud security is the measures taken for protection of data stored online via cloud computing platforms from theft, leakage, and deletion.
+
+WHY?
+-They believe their data is safer on their own local servers where they feel they have more control over the data. Reality-On-premise data can be more vulnerable to security breaches, depending on the type of attack but cloud providers have superior security measures, and their employees are security experts
+-data breaches, data loss, account hijacking, service traffic hijacking, insecure application program interfaces (APIs),malware
+-
+-CIA triad- Confidentiality, Integrity, Accessibility
+
+HOW?
+
+2 way street: hared Responsability bw customer & provider
+
+The security responsibilities that are always the provider’s are related to the safeguarding of the infrastructure itself, as well as access to, patching, and configuration of the physical hosts and the physical network on which the compute instances run and the storage and other resources reside.
+
+The security responsibilities that are always the customer’s include managing users and their access privileges (identity and access management), the safeguarding of cloud accounts from unauthorized access, the encryption and protection of cloud-based data assets, and managing its security posture (compliance).
+
+-Threat intelligence:
+Deterrent controls
+Preventive ccontrols (DDos Protection, Firewalls,VPNs, security tokens,Identity management (two-factor authorization (2FA)),  file-scanning, application whitelisting, machine learning-based malware detection, and network traffic analysis.)
+Detective controls
+Corrective controls
+-Virtual private networks (VPNs) allow remote employees to connect to corporate networks. VPNs accommodate tablets and smartphones for remote access.
+-Data center/ Inhouse security (Visibility into cloud, User and device access contol)
+-Encryption
+-cloud access security broker - on-premises or cloud based software that sits between cloud service users and cloud applications, and monitors all activity and enforces security policies
+
+
+-Physical security and Penetration testing
+-Compliance - Privacy and data protection laws
+-Third-party audits
+-Disaster recovery 
+-SLAs
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Cloud security, also known as cloud computing security, consists of a set of policies, controls, procedures and technologies that work together to protect cloud-based systems, data, and infrastructure. These security measures are configured to protect cloud data, support regulatory compliance and protect customers' privacy as well as setting authentication rules for individual users and devices.
+
+Cloud security refers broadly to measures undertaken to protect digital assets and data stored online via cloud services providers.
+
+cloud security:
+firewalls, penetration testing, obfuscation, tokenization, virtual private networks (VPN), and avoiding public internet connections.
+
+Measures to protect this data include two-factor authorization (2FA), the use of VPNs, security tokens, data encryption, and firewall services, among others.
+
+They believe their data is safer on their own local servers where they feel they have more control over the data.
+
+superior security measures, and their employees are security experts
+
+On-premise data can be more vulnerable to security breaches, depending on the type of attack
+
+Third-party audits of a cloud provider’s security systems and procedures help ensure that users’ data is safe.
+
+Major threats to cloud security include data breaches, data loss, account hijacking, service traffic hijacking, insecure application program interfaces (APIs), poor choice of cloud storage providers, and shared technology that can compromise cloud security.
+
+Distributed denial of service (DDoS) attacks are another threat to cloud security. These attacks shut down a service by overwhelming it with data so that users cannot access their accounts, such as bank accounts or email accounts.
+
+cloud-hosted in another country may be subject to different regulations and privacy measures.
+
+Security concerns associated with cloud computing fall into two broad categories: security issues faced by cloud providers (organizations providing software-, platform-, or infrastructure-as-a-service via the cloud) and security issues faced by their customers (companies or organizations who host applications or store data on the cloud).
+
+Cloud Security is a Shared Responsability: cloud provider and the customer.
+
+The security responsibilities that are always the provider’s are related to the safeguarding of the infrastructure itself, as well as access to, patching, and configuration of the physical hosts and the physical network on which the compute instances run and the storage and other resources reside.
+
+The security responsibilities that are always the customer’s include managing users and their access privileges (identity and access management), the safeguarding of cloud accounts from unauthorized access, the encryption and protection of cloud-based data assets, and managing its security posture (compliance).
+
+The provider must ensure that their infrastructure is secure and that their clients’ data and applications are protected, while the user must take measures to fortify their application and use strong passwords and authentication measures.
+
+Cloud providers can attempt to avoid cloud security issues with the service they provide, but can’t control how customers use the service, what data they add to it, and who has access. Customers can weaken cybersecurity in cloud with their configuration, sensitive data, and access policies.
+
+The provider must ensure that their infrastructure is secure and that their clients’ data and applications are protected, while the user must take measures to fortify their application and use strong passwords and authentication measures.
+
+consider the following criteria:
+
+Visibility into cloud data — A complete view of cloud data requires direct access to the cloud service.
+What data is stored in the cloud.
+Who is using cloud data?
+The roles of users with access to cloud data.
+Who cloud users are sharing data with.
+Where cloud data is located.
+Where cloud data is being accessed and downloaded from, including from which device.
+
+Control over cloud data — Once you have visibility into cloud data, apply the controls that best suit your organization
+Collaboration controls - downgrading file and folder permissions for specified users to editor or viewer, removing permissions, and revoking shared links.
+Encryption
+
+Access to cloud data and applications— As with in-house security
+
+User access control — Implement system and application access controls that ensure only authorized users access cloud data and applications.  A Cloud Access Security Broker (CASB) can be used to enforce access controls
+Device access control — Block access when a personal, unauthorized device tries to access cloud data.
+Malicious behavior identification — Detect compromised accounts and insider threats with user behavior analytics (UBA) so that malicious data exfiltration does not occur.
+Malware prevention — Prevent malware from entering cloud services using techniques such as file-scanning, application whitelisting, machine learning-based malware detection, and network traffic analysis.
+Privileged access — Identify all possible forms of access that privileged accounts may have to your data and applications, and put in place controls to mitigate exposure.
+
+
+
+
+
+
+
+
+
+
+
+
+

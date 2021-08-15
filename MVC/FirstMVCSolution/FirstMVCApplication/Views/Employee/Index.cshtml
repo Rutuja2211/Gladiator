@@ -1,0 +1,17 @@
+﻿@model FirstMVCApplication.Models.Employee
+    @*This means this view is bound to this model*@
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    Employee ID: @Model.Id
+    <br />
+    Employee Name: @Model.Name
+    <br />
+    Employee Age: @Model.Age
+    <br />
+</div>
+

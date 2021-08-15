@@ -1,0 +1,28 @@
+﻿@model IEnumerable<UnderstandingEFSolution.Models.tblUser>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Users</h2>
+
+<table>
+
+    <tr>
+        <td>ID</td>
+        <td>Password</td>
+    </tr>
+    @foreach (var v in Model)
+    {
+        <tr>
+            <td>@v.Id</td>
+            <td>@v.Password</td>
+        </tr>
+    }
+</table>
+@*@Html.ActionLink("Create", "Create")*@
+<input type="button" value="Add" onclick="location.href='@Url.Action("Create")'"/>
+
+
+
+

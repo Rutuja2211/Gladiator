@@ -1,0 +1,14 @@
+1. Master sheets for Azure Migrate and Rapid Adopt from Servers List by Customers
+
+
+STEPS FOR MIGRATE: https://docs.microsoft.com/en-us/azure/migrate/tutorial-discover-vmware
+
+Azure migrate project->VMWare-> Configuration
+
+
+
+-Verify security (Hash commands on admin cmd)
+-Installer run on powershell(go into the folder and then run .\AzureInstaller.p)
+
+2. Error sort
+VCenter credentials from client

@@ -1,0 +1,17 @@
+﻿@model UnderstandingEFSolution.Models.tblUser
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create User</h2>
+
+@using (Html.BeginForm())
+{
+    
+    @Html.DisplayNameFor(z => z.Password)
+    @Html.PasswordFor(z => z.Password)
+    <br />
+    <input type="submit" value="Add" />
+}
+

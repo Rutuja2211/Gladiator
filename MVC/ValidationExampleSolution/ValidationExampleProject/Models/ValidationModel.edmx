@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbDiscShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gamers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Player" Type="varchar" MaxLength="50" />
+          <Property Name="GameId" Type="int" />
+          <Property Name="Score" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Game" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="age" Type="int" />
+          <Property Name="role" Type="varchar" MaxLength="10" />
+          <Property Name="isActive" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <Association Name="FK__Gamers__GameId__00200768">
+          <End Role="Games" Type="Self.Games" Multiplicity="0..1" />
+          <End Role="Gamers" Type="Self.Gamers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gamers">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="proc_add_gamers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="player" Type="varchar" Mode="In" />
+          <Parameter Name="gameid" Type="int" Mode="In" />
+          <Parameter Name="score" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_games" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_LoginCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="un" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_register_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="un" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+          <Parameter Name="uname" Type="varchar" Mode="In" />
+          <Parameter Name="uage" Type="int" Mode="In" />
+          <Parameter Name="urole" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_users_score" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gameid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbDiscShopModelStoreContainer">
+          <EntitySet Name="Gamers" EntityType="Self.Gamers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Gamers__GameId__00200768" Association="Self.FK__Gamers__GameId__00200768">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Gamers" EntitySet="Gamers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbDiscShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="dbDiscShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="users" EntityType="Self.user" />
+          <FunctionImport Name="proc_register_user">
+            <Parameter Name="un" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="uname" Mode="In" Type="String" />
+            <Parameter Name="uage" Mode="In" Type="Int32" />
+            <Parameter Name="urole" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_LoginCheck" ReturnType="Collection(dbDiscShopModel.proc_LoginCheck_Result)">
+            <Parameter Name="un" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Gamers" EntityType="dbDiscShopModel.Gamer" />
+          <EntitySet Name="Games" EntityType="dbDiscShopModel.Game" />
+          <AssociationSet Name="FK__Gamers__GameId__00200768" Association="dbDiscShopModel.FK__Gamers__GameId__00200768">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Gamer" EntitySet="Gamers" />
+          </AssociationSet>
+          <FunctionImport Name="proc_add_gamers">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="player" Mode="In" Type="String" />
+            <Parameter Name="gameid" Mode="In" Type="Int32" />
+            <Parameter Name="score" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_users_score" ReturnType="Collection(dbDiscShopModel.proc_users_score_Result)">
+          <Parameter Name="gameid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_games" ReturnType="Collection(String)" />
+        </EntityContainer>
+        <ComplexType Name="proc_LoginCheck_Result">
+          <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="role" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <EntityType Name="Gamer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Player" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GameId" Type="Int32" />
+          <Property Name="Score" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Game" Relationship="dbDiscShopModel.FK__Gamers__GameId__00200768" FromRole="Gamer" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Game1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Gamers" Relationship="dbDiscShopModel.FK__Gamers__GameId__00200768" FromRole="Game" ToRole="Gamer" />
+        </EntityType>
+        <Association Name="FK__Gamers__GameId__00200768">
+          <End Type="dbDiscShopModel.Game" Role="Game" Multiplicity="0..1" />
+          <End Type="dbDiscShopModel.Gamer" Role="Gamer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gamer">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="proc_users_score_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Player" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Score" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbDiscShopModelStoreContainer" CdmEntityContainer="dbDiscShopEntities">
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="dbDiscShopModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_register_user" FunctionName="dbDiscShopModel.Store.proc_register_user" />
+          <FunctionImportMapping FunctionImportName="proc_LoginCheck" FunctionName="dbDiscShopModel.Store.proc_LoginCheck">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbDiscShopModel.proc_LoginCheck_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Gamers">
+            <EntityTypeMapping TypeName="dbDiscShopModel.Gamer">
+              <MappingFragment StoreEntitySet="Gamers">
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="Player" ColumnName="Player" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="dbDiscShopModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="Game1" ColumnName="Game" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_add_gamers" FunctionName="dbDiscShopModel.Store.proc_add_gamers" />
+          <FunctionImportMapping FunctionImportName="proc_users_score" FunctionName="dbDiscShopModel.Store.proc_users_score">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbDiscShopModel.proc_users_score_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Player" ColumnName="Player" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_games" FunctionName="dbDiscShopModel.Store.proc_games" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

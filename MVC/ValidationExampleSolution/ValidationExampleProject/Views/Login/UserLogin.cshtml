@@ -1,0 +1,39 @@
+﻿@model ValidationExampleProject.Models.user
+
+@{
+    /**/
+
+    ViewBag.Title = "UserLogin";
+}
+
+<h2>UserLogin</h2>
+
+@using (Html.BeginForm())
+{
+<div>
+    @Html.DisplayNameFor(m => m.username)
+    @Html.TextBoxFor(m => m.username, new { @class = "form-control", @placeholder = "Enter the username" })
+    @Html.ValidationMessageFor(m => m.username, null, new { @class = "text-danger" })
+    <br />
+    @Html.DisplayNameFor(m => m.password)
+    @Html.PasswordFor(m => m.password, new { @class = "form-control", @placeholder = "Enter the password" })
+    @Html.ValidationMessageFor(m => m.password, null, new { @class = "text-danger" })
+    <br />
+
+    <input type="submit" value="Login" class="btn btn-success" />
+    <input type="reset" value="Cancel" class="btn btn-danger" />
+    <br>
+    <p>Not a user?</p>
+    <input type="button" value="Register" onclick="location.href='@Url.Action("RegisterPage","Register")'"/>
+</div>
+}
+
+    <div>
+        @ViewBag.Error
+    </div>
+<br>
+<div>
+    @Html.Partial("_StaticPartial")
+</div>
+
+

@@ -1,0 +1,63 @@
+﻿@model ValidationExampleProject.Models.user
+
+@{
+    ViewBag.Title = "RegisterPage";
+}
+
+<h2>RegisterPage</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.DisplayNameFor(model => model.username)
+    @Html.TextBoxFor(model => model.username,  new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.username, null, new { @class = "text-danger" })
+    <br />
+
+    @Html.DisplayNameFor(model => model.password)
+    @Html.PasswordFor(model => model.password,  new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.password, null, new { @class = "text-danger" })
+    <br />
+
+
+    @Html.DisplayNameFor(model => model.name)
+    @Html.TextBoxFor(model => model.name, new { @class = "form-control"  })
+    @Html.ValidationMessageFor(model => model.name, null, new { @class = "text-danger" })
+    <br />
+
+
+    @Html.DisplayNameFor(model => model.age)
+    @Html.TextBoxFor(model => model.age,  new { @class = "form-control"  })
+    @Html.ValidationMessageFor(model => model.age, null, new { @class = "text-danger" })
+    <br />
+
+    @Html.DisplayNameFor(model => model.role)
+    @*@Html.TextBoxFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })*@
+    @Html.DropDownList("role", new SelectList(@ViewBag.roles), "Select Role", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.role, null, new { @class = "text-danger" })
+    <br />
+
+    @Html.DisplayNameFor(model => model.isActive)
+    @*@Html.TextBoxFor(model => model.isActive, new { htmlAttributes = new { @class = "form-control" } })*@
+    @Html.DropDownList("isActive", new SelectList(@ViewBag.status), "Select Status", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.isActive, null, new { @class = "text-danger" })
+    <br />
+
+    <input type="submit" value="Create" class="btn btn-default" />
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<br />
+<div>
+    @Html.Partial("_StaticPartial")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13492fa7cd334cd2899d5355a3f206a6" Name="Diagram1">
+        <EntityTypeShape EntityType="dbDiscShopModel.user" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDiscShopModel.Gamer" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="dbDiscShopModel.Game" Width="1.5" PointX="3.375" PointY="1.125" />
+        <AssociationConnector Association="dbDiscShopModel.FK__Gamers__GameId__00200768" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

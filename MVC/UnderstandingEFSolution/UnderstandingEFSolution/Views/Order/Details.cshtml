@@ -1,0 +1,20 @@
+﻿@model UnderstandingEFSolution.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <span>Order Number</span> @Model.OrderID
+    <br />
+    <span>Date of Order</span> @Model.OrderDate
+    <hr />
+    <span>Customer Name</span> @Model.Customer.ContactName
+    <br />
+    <span>Customer Phone</span> @Model.Customer.Phone
+    <br />
+</div>
+
+
+

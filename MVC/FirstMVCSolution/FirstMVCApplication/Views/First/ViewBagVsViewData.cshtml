@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "ViewBagVsViewData";
+}
+
+<h2>ViewBagVsViewData</h2>
+
+<h3>View Bag List</h3>
+
+@for (int i = 0; i < ViewBag.users.Count; i++)
+{
+    @ViewBag.users[i];
+    <br>
+}
+
+<br />
+
+<h3>View Data List</h3>
+
+@for (int i = 0; i < ((List<String>)ViewData["users"]).Count; i++)
+{
+    @(((List<String>)ViewData["users"])[i]);
+    <br>
+}
+
+This won't raise error-> @ViewBag.Nothing
+
+This won't raise error-> @ViewData["Nothing"]
+
+@*This is a comment in cshtml. Above code does not generate any error even when property is not available*@
+
+
+
+

@@ -1,0 +1,16 @@
+.display
+{
+    border:1px solid black;
+    height: 100px;
+    width: 100px;
+}
+
+.vote
+{
+    background-color: green;
+}
+
+.novote
+{
+    background-color: red;
+}

@@ -1,0 +1,254 @@
+Cloud adoption is a strategy used by enterprises to improve the scalability of Internet-based database capabilities while reducing cost and risk.
+
+
+The Cloud Adoption Framework is a collection of documentation, implementation guidance, best practices, and tools that are proven guidance from Microsoft designed to accelerate your cloud adoption journey.
+
+
+Align foundational concepts to onboard a person, project, or team - Core decisions as a reference to begin cloud adoption
+
+Adopt the cloud to deliver business and technical outcomes sooner - Migrating on premises workloads to cloud, prepare and deploy innovative solutions, designing/configuring environment
+
+Improve controls to ensure proper operations of the cloud -
+Solid operational model considering organizational changes
+
+Establish teams to support adoption and operations - Depending on adoption strategy and operation model, teams may be needed to establish like cloud governance team,cloud operations, cloud strategy, etc
+
+1. Strategy: define business justification and expected outcomes of adoption.
+2. Plan: align actionable adoption plans to business outcomes.
+3. Ready: Prepare the cloud environment for the planned changes.
+4. Migrate: Migrate and modernize existing workloads.                   ------------>>		ADOPT
+5. Innovate: Develop new cloud-native or hybrid solutions.            ------------->>
+6. Govern: Govern the environment and workloads.
+7. Manage: Operations management for cloud and hybrid solutions.
+8. Organize: Govern the environment and workloads.
+
+
+policies, role-based access control (RBAC), Azure Blueprints, subscriptions
+
+Azure:
+Azure is Microsoft's public cloud platform. Azure offers a large collection of services including platform as a
+service (PaaS), infrastructure as a service (IaaS), and managed database service capabilities
+
+relies on a technology known as virtualization
+Using an emulation layer that maps software instructions to hardware
+instructions, virtualized hardware can execute in software as if it were the actual hardware itself
+
+Azure terminology:
+
+1. Resource: An entity that's managed by Azure. Examples include Azure Virtual Machines, virtual networks, and
+storage accounts.
+
+2. Subscription: A logical container for your resources. Each Azure resource is associated with only one
+subscription. Creating a subscription is the first step in adopting Azure.
+
+3. Azure account: The email address that you provide when you create an Azure subscription is the Azure
+account for the subscription. The party that's associated with the email account is responsible for the monthly
+costs that are incurred by the resources in the subscription. When you create an Azure account, you provide
+contact information and billing details, like a credit card. You can use the same Azure account (email address)
+for multiple subscriptions. Each subscription is associated with only one Azure account.
+
+4. Account administrator : The party associated with the email address that's used to create an Azure
+subscription. The account administrator is responsible for paying for all costs that are incurred by the
+subscription's resources.
+
+5. Azure Active Directory (Azure AD): The Microsoft cloud-based identity and access management service.
+Azure AD allows your employees to sign in and access resources.
+
+6. Azure AD tenant: A dedicated and trusted instance of Azure AD. An Azure AD tenant is automatically created
+when your organization first signs up for a Microsoft cloud service subscription like Microsoft Azure, Intune, or
+Microsoft 365. An Azure tenant represents a single organization.
+
+7. Azure AD directory: Each Azure AD tenant has a single, dedicated, and trusted directory. The directory
+includes the tenant's users, groups, and apps. The directory is used to perform identity and access
+management functions for tenant resources. A directory can be associated with multiple subscriptions, but
+each subscription is associated with only one directory.
+
+8. Resource groups: Logical containers that you use to group related resources in a subscription. Each resource
+can exist in only one resource group. Resource groups allow for more granular grouping within a subscription,
+and are commonly used to represent a collection of assets required to support a workload, application, or
+specific function within a subscription.
+
+9. Management groups: Logical containers that you use for one or more subscriptions. You can define a
+hierarchy of management groups, subscriptions, resource groups, and resources to efficiently manage access,
+policies, and compliance through inheritance.
+
+10. Region: A set of Azure datacenters that are deployed inside a latency-defined perimeter. The datacenters are
+connected through a dedicated, regional, low-latency network. Most Azure resources run in a specific Azure
+region.
+
+Azure subscription considerations:
+Who is responsible for paying for the subscription?
+The party associated with the email address that
+you provide when you create a subscription by default is the subscription's account administrator
+
+Which Azure offer am I interested in?
+if you intend to use a subscription to run
+nonproduction workloads, you might choose the Pay-As-You-Go Dev/Test offer or the Enterprise Dev/Test offer.
+
+Azure administrative roles:
+Azure defines three types of roles for administering subscriptions, identities, and resources:
+1. Classic subscription administrator roles
+2. Azure role-based access control (RBAC) roles
+3. Azure Active Directory (Azure AD) administrator roles
+
+-----------------------------------
+Accelerate Adoption
+Migration plan - developing a project backlog and effort alignment (timelines)
+Hand off production workloads
+
+------------------------------------
+Improve controls
+operating model:
+The core principles of a well-managed operating model
+1.Operational Excellence
+To achieve operational excellence, you must focus on customer and stakeholder value by keeping an eye on revenue, risk, and cost impacts.
+Areas to monitor include systems automation, IT operations
+management practices, and Resource Consistency
+
+Step 1: Define a strategy - Understand motivations, business outcomes and justifications
+Step 2: Develop an organizational change management plan - iterative approach to subtly realign people, processes, and technology to support a holistic business strategy, workload distribution, timelines
+Step 3: Manage change across cloud adoption efforts
+Each wave (or release, in agile terms) delivers a set of workloads to the cloud.
+the adoption teams need backlog updates that reflect the prioritized workloads in the plan. These updates are based on any changes to business plans and customer needs.
+
+
+2.Performance
+
+3.Reliability
+
+4.Cost optimisation
+The Cost Management discipline of cloud governance focuses on establishing budgets, monitoring cost allocation
+patterns, and implementing controls to improve cloud spending behaviors
+
+How?
+Document your Cost Management policies, processes
+-Create budget-Azure cost management+billing, Azure monitor resource group budgets and trigger alerts
+-Monitor resource utilisation
+-Reduce usage of resources
+	Manually or automatically shut down unused VMs.
+	Delete or deallocate stopped VMs
+	Deprovisioning of unrequired resources
+	Cleanup of orphaned disk and related objects(dangling/orphaned obj related to deleted VM)
+	Ensure proper resource sizing.
+	Align spending to budget expectations
+	hybrid benefits to reduce costs
+	Scaling
+	 -Vertical-increase capacity of existing hardware/software
+          	  -Horizontal-connect multiple entities to work as single unit
+		eg. -Spot VMs(Bidding for resources cheaper, immediate assign-not for longer time but useful for temporary work/temporary 		overload) - evicted on short notice
+	Reserved instances for discount(even stop them)
+
+-Auditing spendings monthly/yearly
+
+5.Security
+	Security helps create assurances of confidentiality, integrity, and availability for a business
+	mitigate or avoid the business risk from cybersecurity attacks
+	
+11 essential security practices:
+
+People:
+1. Educate teams about the cloud security journey - why
+
+2. Educate teams on cloud security technology -  technical education on securing cloud resources Recommended configurations and best practices
+Exams (Az)
+
+Process:
+3. Assign accountability for cloud security decisions - who is responsible for what decisions & document
+
+4. Update Incident Response (IR) processes for cloud - threat detection tools and simulated attacks
+
+5. Establish security posture management - This includes monitoring overall security posture using Azure Security Center Secure Score and other data sources
+using containers, key vaults, etc
+
+Technology:
+
+6. Require Passwordless or Multi-Factor Authentication (MFA) - Authenticatop app, 2 factor
+
+7. Integrate native firewall and network security - Azure Firewall, Azure Web App
+Firewall (WAF), NSGs, and Distributed Denial of Service (DDoS) mitigations into your network security approach
+, also third party firewalls
+
+8. Integrate native threat detection - Enable threat detection in Azure security center
+
+Foundational Architecture Decisions:
+9. Standardize on a single directory and identity -  for each application and user - multiple accounts created friction and confusion
+
+10. Use identity based access control (instead of keys) - Azure AD identities for authentication due to secret rotations of keys and establish policies
+Managed identities+ Azure Key vault
+
+11. Establish a single unified security strategy - Suppose network security and identity management teams use different security strategies, application teams find it difficult to work with those. May even negate the effect of each other
+
+
+Best practices:
+-Build a shared understanding
+-Integrate security early into cloud adoption
+-Use an agile approach
+-Modernize security strategy
+-Native capabilities in azure- secure score, azure blueprints, azure policies
+
+Secure score: Use a scored assessment of your Azure security posture to track security efforts and
+projects in your organization.
+
+Azure Blueprints: Cloud architects and centralized IT groups can define a repeatable set of Azure
+resources that implements and adheres to an organization's standards, patterns, and requirements.
+
+Azure Policy: This is the foundation of the visibility and control capabilities that the other services use.
+Azure Policy is integrated into Azure Resource Manager, so you can audit changes and enforce policies
+across any resource in Azure before, during, or after its creation
+
+-----------------------------------------------------------------------------
+STRATEGY
+
+-Motivations -  Meet with key stakeholders and executives to document the motivations behind cloud adoption.
+-Business Outcomes - Engage motivated stakeholders and executives to document specific business outcomes.
+-Business Justifications - Develop a business case to validate the financial model that supports your motivations and outcomes.
+
+------------------------------------------------------------------------------
+
+PLAN
+
+-Prerequisites: Confirm that all prerequisite steps have been completed before you create your plan.
+-Define and prioritize workloads: Prioritize your first 10 workloads to establish an initial adoption backlog.
+-Align assets to workloads: Identify which assets (proposed or existing) are required to support the prioritized workloads.
+-Review rationalization decisions: Review rationalization decisions to refine adoption path decisions: migrate or innovate.
+-Establish iterations and release plans: Iterations are the time blocks allocated to do work. Releases are the definition of the work to be done before triggering a change to production processes.
+-Estimate timelines: Establish rough timelines for release planning purposes, based on initial estimates.
+
+------------------------------------------------------------------------------
+READY - Ensure the evnvironment is eready for cloud adoption plan
+host the workloads that you plan to build in or migrate to the cloud 
+
+-Azure setup guide: Review the Azure setup guide to become familiar with the tools and approaches you need to use to create a landing zone.
+-Operating Model - A cloud operating model is the collection of processes and procedures that define how you want to operate technology in the cloud=>Decentral, central, enterprise, distributed
+- Azure Landing zone - Basically a bunch of services that gives u a place to deploy services- eg. Blueprints, ARM Templates, eg. on prem data center, before installing servers, area, switches and routers.
+
+---------------------------------------------------------------------------------
+ADOPT
+
+MIGRATE
+Within each migration sprint, a batch of workloads is migrated to the cloud.
+Three phases for each workload
+assess workloads, deploy workloads, and release workloads
+
+-Assess workloads: Assess workloads to evaluate cost, modernization, and deployment tooling. This process focuses on validating or challenging the assumptions made during earlier discovery and assessments by looking more closely at rationalization options. This is also when user patterns and dependencies are studied more closely to ensure workloads will achieve technical success after migration.
+-Deploy workloads: After workloads are assessed, the existing functionality of those workloads is replicated (or improved) in the cloud. This could involve a lift and shift or rehost to the cloud. But more commonly during this phase, many of the assets supporting these workloads will be modernized to capitalize on the benefits of the cloud.
+-Release workloads: Once functionality is replicated to the cloud, workloads can be tested, optimized, documented, and released for ongoing operations. Critical during this process, is the effort to review the migrated workloads and hand them off to governance, operations management, and security teams for ongoing support of those workloads.
+
+INNOVATE
+unlock new technical skills and expanded business capabilities i.e provide greatest return on investment
+understanding customer needs and rapidly building innovations that shape how your customers interact with your products.
+------------------------------------------------------------------------------
+GOVERN
+Adopting the cloud is a journey, not a destination
+Cloud governance creates guardrails that keep the company on a safe path throughout the journey.
+
+Disciplines of Cloud Governance
+-Cost Management
+-Security baseline
+-Identity baseline - Access control
+-Resource consistency - consistently configured in such a way that they can be discoverable by IT operations
+-Deployment acceleration- deployment, configuration alignment, and script reusability(DevOps Activities)
+
+-------------------------------------------------------------------------------
+
+MANAGE
